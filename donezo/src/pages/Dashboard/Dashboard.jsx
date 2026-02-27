@@ -98,8 +98,24 @@ const Dashboard = () => {
             {/* left side */}
             <div className='w-[10%]'>
               <h1 className='text-black'>MENU</h1>
-              <ul className='w-full'>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+              <ul className='w-full '>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                
+              </ul>
+              <h1 className='text-black uppercase'>General</h1>
+              <ul className='w-full '>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
+                
               </ul>
             </div>
             {/* main content */}
@@ -134,10 +150,10 @@ const Dashboard = () => {
                     <div className='rounded-2xl bg-white px-4 h-50 text-black hover:text-white 
                     hover:bg-linear-to-tr from-green-900 to-green-950'>
                         <div className='flex justify-between items-center mt-5'>
-                            <h2 className='text-4xl lg:text-2xl font-bold '>Total Project</h2>
+                            <h2 className='text-4xl lg:text-2xl font-bold '>Ended Projects</h2>
                             <div className='w-10 h-10 flex justify-center items-center bg-white rounded-full border text-black rotate-45'><IoIosArrowRoundUp className='text-4xl' /></div>
                         </div>
-                        <div className='text-4xl font-bold my-2'>24</div>
+                        <div className='text-4xl font-bold my-2'>10</div>
                         <div className='flex items-center gap-2 pt-5'>
                             <span className='border border-green-600 text-green-600 px-1 rounded-md'>5+</span>
                             <p className='text-green-800'>Incressed form last month</p>
@@ -147,10 +163,10 @@ const Dashboard = () => {
                     <div className='rounded-2xl bg-white px-4 h-50 text-black hover:text-white 
                     hover:bg-linear-to-tr from-green-900 to-green-950'>
                         <div className='flex justify-between items-center mt-5'>
-                            <h2 className='text-4xl lg:text-2xl font-bold '>Total Project</h2>
+                            <h2 className='text-4xl lg:text-2xl font-bold '>Running Projects</h2>
                             <div className='w-10 h-10 flex justify-center items-center bg-white rounded-full border text-black rotate-45'><IoIosArrowRoundUp className='text-4xl' /></div>
                         </div>
-                        <div className='text-4xl font-bold my-2'>24</div>
+                        <div className='text-4xl font-bold my-2'>12</div>
                         <div className='flex items-center gap-2 pt-5'>
                             <span className='border border-green-600 text-green-600 px-1 rounded-md'>5+</span>
                             <p className='text-green-800'>Incressed form last month</p>
@@ -160,10 +176,10 @@ const Dashboard = () => {
                     <div className='rounded-2xl bg-white px-4 h-50 text-black hover:text-white 
                     hover:bg-linear-to-tr from-green-900 to-green-950'>
                         <div className='flex justify-between items-center mt-5'>
-                            <h2 className='text-4xl lg:text-2xl font-bold '>Total Project</h2>
+                            <h2 className='text-4xl lg:text-2xl font-bold '>Pending Projects</h2>
                             <div className='w-10 h-10 flex justify-center items-center bg-white rounded-full border text-black rotate-45'><IoIosArrowRoundUp className='text-4xl' /></div>
                         </div>
-                        <div className='text-4xl font-bold my-2'>24</div>
+                        <div className='text-4xl font-bold my-2'>2</div>
                         <div className='flex items-center gap-2 pt-5'>
                             <span className='border border-green-600 text-green-600 px-1 rounded-md'>5+</span>
                             <p className='text-green-800'>Incressed form last month</p>
