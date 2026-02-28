@@ -1,11 +1,18 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoIosArrowRoundUp } from "react-icons/io";
 import { BsCameraVideoFill } from "react-icons/bs";
 import { CgPlayPauseO } from "react-icons/cg";
 import { CgPlayStopO } from "react-icons/cg";
 import { Link } from 'react-router';
-import { CgMenuGridR } from "react-icons/cg";
+import { MdDashboard } from "react-icons/md";
+import { FaTasks, FaCalendarAlt, FaChartBar, FaUsers } from "react-icons/fa";
+import { IoSettingsSharp, IoHelpCircleSharp } from "react-icons/io5";
+import { BiLogOut } from "react-icons/bi";
+import { FiSearch, FiBell, FiMail, FiCheckSquare } from "react-icons/fi";
+import axios from 'axios';
+import { SlBadge } from "react-icons/sl";
+
 const data = [
     { day: "S", height: "h-28", type: "striped" },
     { day: "M", height: "h-36", type: "green" },
@@ -92,34 +99,161 @@ const pendingLen = (pending / 100) * circumference;
 const totalLen = (totalProgress / 100) * circumference;
 
 const Dashboard = () => {
+    const [endpoints, setEndpoints] = useState([])
+    const { all, overview, product, products, analytics, user, users, } = endpoints || {}
+    const storedData = localStorage.getItem('userData');
+    const userData = JSON.parse(storedData)
+    const [userInfo, setuserInfo] = useState([])
+    useEffect(() => {
+        axios.get('https://task-api-eight-flax.vercel.app').then(res => {
+            // console.log(res.data?.endpoints)
+            setEndpoints(res.data?.endpoints)
+            if (res.data?.endpoints) {
+                axios.get(`https://task-api-eight-flax.vercel.app${overview}`).then((res) => {
+                    // console.log('all',res.data)
+                }).catch(err => {
+                    console.log('error', err)
+                })
+
+                axios.get(`https://task-api-eight-flax.vercel.app/api/users/${userData.id}`).then((res) => {
+                    console.log('users data::', res.data)
+                    setuserInfo(res.data)
+
+                }).catch(err => {
+                    console.log('error', err)
+                })
+
+            }
+        }).catch(err => {
+            console.log('error::', err)
+        })
+    }, [])
+    // console.log('endpoints::', endpoints)
 
     return (
-        <div className='w-full border min-h-screen border-yellow-200 flex text-white '>
+        <div className='w-full  min-h-screen bg-white  flex text-white '>
             {/* left side */}
-            <div className='w-[10%]'>
-              <h1 className='text-black'>MENU</h1>
-              <ul className='w-full '>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                
-              </ul>
-              <h1 className='text-black uppercase'>General</h1>
-              <ul className='w-full '>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:text-green-800 hover:border-b-transparent flex gap-2 lg:text-xl justify-between items-center  hover:border-l-green-800 text-black font-bold my-4' ><CgMenuGridR className='text-xl ' /> <li>Dashboard</li></Link>
-                
-              </ul>
+            <div className='w-[10%] pt-10'>
+                {/* Logo */}
+                <div className="flex flex-col lg:flex-row items-start lg:items-center xl:gap-2 mb-7 ps-2 cursor-pointer">
+                    <div className="bg-indigo-600 p-1  rounded-xl ">
+                        <FiCheckSquare className="text-white text-xl" />
+                    </div>
+                    <span className="text-xs lg:text-xl xl:text-2xl  font-bold tracking-wide text-gray-800">
+                        Donezo
+                    </span>
+                </div>
+                <h1 className='text-gray-400 font-bold mb-4 ps-2'>MENU</h1>
+                <ul className='w-full'>
+                    <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:border-b-transparent hover:border-l-green-800 hover:text-green-800 flex gap-3 lg:text-md items-center text-gray-400 font-bold my-4'>
+                        <MdDashboard className='text-md' />
+                        <li className='hidden xl:block'>Dashboard</li>
+                    </Link>
+
+                    <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:border-b-transparent hover:border-l-green-800 hover:text-green-800 flex gap-3 lg:text-md items-center text-gray-400 font-bold my-4'>
+                        <FaTasks className='text-xl' />
+                        <li className='hidden xl:block'>Tasks</li>
+                    </Link>
+
+                    <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:border-b-transparent hover:border-l-green-800 hover:text-green-800 flex gap-3 lg:text-md items-center text-gray-400 font-bold my-4'>
+                        <FaCalendarAlt className='text-xl' />
+                        <li className='hidden xl:block'>Calendar</li>
+                    </Link>
+
+                    <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:border-b-transparent hover:border-l-green-800 hover:text-green-800 flex gap-3 lg:text-md items-center text-gray-400 font-bold my-4'>
+                        <FaChartBar className='text-md' />
+                        <li className='hidden xl:block'>Analytics</li>
+                    </Link>
+
+                    <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:border-b-transparent hover:border-l-green-800 hover:text-green-800 flex gap-3 lg:text-md items-center text-gray-400 font-bold my-4'>
+                        <FaUsers className='text-md' />
+                        <li className='hidden xl:block'>Team</li>
+                    </Link>
+                </ul>
+
+                <h1 className='text-gray-400 uppercase mt-6 mb-4'>General</h1>
+
+                <ul className='w-full'>
+                    <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:border-b-transparent hover:border-l-green-800 hover:text-green-800 flex gap-3 lg:text-md items-center text-gray-400 font-bold my-4'>
+                        <IoSettingsSharp className='text-md' />
+                        <li className='hidden xl:block'>Settings</li>
+                    </Link>
+
+                    <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:border-b-transparent hover:border-l-green-800 hover:text-green-800 flex gap-3 lg:text-md items-center text-gray-400 font-bold my-4'>
+                        <IoHelpCircleSharp className='text-xl' />
+                        <li className='hidden xl:block'>Help</li>
+                    </Link>
+
+                    <Link href='#' className='border-[6px] border-white hover:border-t-transparent hover:border-r-transparent hover:border-b-transparent hover:border-l-green-800 hover:text-green-800 flex gap-3 lg:text-md items-center text-gray-400 font-bold my-4'>
+                        <BiLogOut className='text-xl' />
+                        <li className='hidden xl:block'>Logout</li>
+                    </Link>
+                </ul>
+                <div className='relative w-30 rounded-xl h-30 border border-r-blue-700'>
+                    <img src="/bg_music_image.jpg" alt="image" className='h-full rounded-xl' />
+                    <SlBadge className='absolute top-1 left-2 text-black text-xl' />
+                    <h1 className='text-xs absolute top-8 left-2 font-bold text-white'>Download Our <br /> Mobile App</h1>
+                    <h3 className='text-xs absolute top-15 left-2 text-center text-white/70'>Get easy in another way</h3>
+                    <div className='absolute top-20 text-center ms-2'>
+                        <button className='bg-green-900 text-white px-1 rounded-xl'>Download</button>
+                    </div>
+                </div>
             </div>
             {/* main content */}
-            <div className='w-[90%]  px-2'>
+            <div className='w-[90%] px-2'>
+                {/* navbar */}
+                <div className="w-full bg-[#f4f5f7] p-4">
+                    <div className="flex items-center justify-between bg-[#ececec] rounded-2xl px-6 py-3">
+                        {/* Left Section - Search */}
+                        <div className="flex items-center gap-4 w-full max-w-md relative">
+
+                            <FiSearch className="absolute left-4 text-gray-400" />
+
+                            <input
+                                type="text"
+                                placeholder="Search task"
+                                className="w-full pl-10 pr-16 py-2 rounded-full bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                            />
+
+                            {/* Shortcut badge */}
+                            <span className="absolute right-3 text-xs bg-gray-100 px-2 py-1 rounded-md text-gray-500">
+                                ⌘ F
+                            </span>
+                        </div>
+                        {/* Right Section */}
+                        <div className="flex items-center lg:gap-6">
+
+                            {/* Mail Icon */}
+                            <button className="p-2 bg-white rounded-full shadow-sm hover:bg-gray-100 transition">
+                                <FiMail className="text-gray-600" />
+                            </button>
+
+                            {/* Bell Icon */}
+                            <button className="p-2 bg-white rounded-full shadow-sm hover:bg-gray-100 transition">
+                                <FiBell className="text-gray-600" />
+                            </button>
+
+                            {/* Profile */}
+                            <div className="flex items-center gap-3 bg-white px-3 py-1.5 rounded-full shadow-sm">
+                                <img
+                                    src="https://i.pravatar.cc/40"
+                                    alt="profile"
+                                    className="w-8 h-8 rounded-full"
+                                />
+                                <div className="hidden md:block">
+                                    <p className="text-sm hidden xl:block font-semibold text-gray-700">
+                                        {userInfo?.name}
+                                    </p>
+                                    <p className="text-xs hidden xl:block text-gray-400">
+                                        {userInfo?.email}
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
                 {/* top part */}
                 <div className='flex justify-between items-center '>
                     <div>
@@ -231,18 +365,18 @@ const Dashboard = () => {
                                 <button className='min-w-30 lg:px-4 h-10 rounded-2xl border border-green-900 bg-white text-black hover:text-white hover:bg-linear-to-tr from-green-800 to-green-950'>+ Add Member</button>
                             </div>
                             {
-                             member_list.map((item,index)=><div key={index+1}>
-                                <div>
-                                    <img src={item.image} alt="" />
-                                </div>
-                                <div>
-                                    <h2 className='text-xl text-gray-500'>{item.name}</h2>
-                                    <div className='flex justify-between items-center'>
-                                        <p className='text-gray-400'>Working on <span className='text-sm font-bold text-black'>{item.respository}</span></p>
-                                         <span className={`${item.status=== 'Completed' &&'text-green-600 border-green-300'|| item?.status ==='In Progress' &&'text-yellow-600 border-yellow-300' || 'text-red-600  border-red-300'} border w-22 h-8 text-center`}>{item.status}</span>
+                                member_list.map((item, index) => <div key={index + 1}>
+                                    <div>
+                                        <img src={item.image} alt="" />
                                     </div>
-                                </div>
-                             </div>)
+                                    <div>
+                                        <h2 className='text-xl text-gray-500'>{item.name}</h2>
+                                        <div className='flex justify-between items-center'>
+                                            <p className='text-gray-400'>Working on <span className='text-sm font-bold text-black'>{item.respository}</span></p>
+                                            <span className={`${item.status === 'Completed' && 'text-green-600 border-green-300' || item?.status === 'In Progress' && 'text-yellow-600 border-yellow-300' || 'text-red-600  border-red-300'} leading-7 border rounded-xl w-22 h-8 text-center`}>{item.status}</span>
+                                        </div>
+                                    </div>
+                                </div>)
                             }
                         </div>
                         <div className="w-95 bg-[#f3f4f6] p-8 rounded-2xl">
@@ -347,7 +481,7 @@ const Dashboard = () => {
                         </div>
                         <div className='mt-5'>
                             {
-                                projectList.map((project, index) => <div key={index+1} className='flex items-center gap-2 mt-4'>
+                                projectList.map((project, index) => <div key={index + 1} className='flex items-center gap-2 mt-4'>
                                     <img className='max-w-12 max-h-12 shadow-md shadow-gray-400 p-1  rounded-full ' src={project.logo} alt="logo" />
                                     <div>
                                         <h2 className='text-xl text-black font-semibold'>{project.name}</h2>
@@ -356,7 +490,7 @@ const Dashboard = () => {
                                 </div>)
                             }
                         </div>
-                        <div className='mt-5 relative'>
+                        <div className='mt-20 relative'>
                             <img className='w-full h-50 rounded-xl ' src="/bg_music_image.jpg" alt="" />
                             <h2 className='text-2xl text-white font-bold absolute top-[10%] left-[5%] z-50 '>Time Tracker</h2>
                             <h2 className='text-4xl text-white font-bold absolute top-[40%] left-[30%]'>01:24:08</h2>

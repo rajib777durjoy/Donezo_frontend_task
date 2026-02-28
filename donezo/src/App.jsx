@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
-import Home from './pages/Home';
-import Navbar from './pages/Navbar/Navbar';
 import Login from './pages/Auth/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
-
+import ProtectRoute from './pages/ProtectRoute/ProtectRoute';
+import { useNavigate } from "react-router";
 const App = () => {
+  let navigate = useNavigate();
+  useEffect(()=>{
+    const user=localStorage.getItem('userData');
+    if(!user){
+      return navigate('/login')
+    }
+  })
   return (
     <Routes>
-      <Route path='/' element={<Home></Home>}>
-        <Route path='Login' element={<Login></Login>}></Route>
-        <Route path='/' element={<Dashboard></Dashboard>}></Route>
-      </Route>
+      <Route path='Login' element={<Login></Login>}></Route>
+      <Route
+        path="/"
+        element={<ProtectRoute><Dashboard /></ProtectRoute>
+        }
+      />
     </Routes>
   );
 };
